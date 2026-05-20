@@ -1,158 +1,122 @@
-🚀 Developer Portfolio Website – Installation & Deployment Guide 
+# 🌐 Portfolio — Divyanshu Rathore
 
-This guide will help you install, run, and deploy the portfolio website built with React, Vite, Tailwind CSS, and Framer Motion.
- It is designed to be beginner-friendly and comes with comments in the code so you can easily understand what each part does and customize it as you like.
+A modern, responsive personal portfolio website built with **React 19**, **Vite**, **Tailwind CSS v4**, and **Framer Motion**. Features smooth scroll animations, a contact form powered by EmailJS, and a clean component-based architecture.
 
-🔹 1. Prerequisites
-Before starting, make sure you have the following installed on your computer:
-Node.js (v18 or later) → Download here
+---
 
+## ✨ Features
 
-npm (comes with Node.js) or yarn as your package manager
+- Smooth scroll animations with **Locomotive Scroll** and **GSAP**
+- Animated UI transitions via **Framer Motion**
+- Fully responsive — mobile, tablet, and desktop
+- Contact form with **EmailJS** (no backend needed)
+- Fast dev and build tooling with **Vite 7**
+- Icon library via **React Icons**
+- Client-side routing with **React Router DOM v7**
 
+---
 
-A code editor (recommended: Visual Studio Code)
+## 🛠️ Tech Stack
 
+| Category       | Technology                        |
+|----------------|-----------------------------------|
+| Framework      | React 19                          |
+| Build Tool     | Vite 7                            |
+| Styling        | Tailwind CSS v4                   |
+| Animations     | Framer Motion, GSAP               |
+| Scroll         | Locomotive Scroll                 |
+| Contact Form   | EmailJS (`@emailjs/browser`)      |
+| Routing        | React Router DOM v7               |
+| Icons          | React Icons v5                    |
+| Linting        | ESLint 9                          |
 
-Basic understanding of Git (optional but useful)
+---
 
+## 📁 Project Structure
 
+```
+Portfolio/
+├── public/             # Static assets (favicon, images, etc.)
+├── src/                # Source code
+│   ├── components/     # Reusable React components
+│   ├── pages/          # Page-level components
+│   ├── assets/         # Images, fonts, and other assets
+│   └── main.jsx        # App entry point
+├── index.html          # HTML shell
+├── vite.config.js      # Vite configuration
+├── eslint.config.js    # ESLint configuration
+└── package.json        # Dependencies and scripts
+```
 
-🔹 2. Running the Portfolio Locally
-Step 1: Download the Project
-Download the source code (ZIP file) from the package you received.
+---
 
+## 🚀 Getting Started
 
-Extract the ZIP file into a folder on your computer.
- Example: C:\Users\YourName\Documents\portfolio
+### Prerequisites
 
+- [Node.js](https://nodejs.org/) v18 or later
+- npm (comes with Node.js)
 
-Step 2: Open in VS Code
-Open Visual Studio Code (or any editor you use).
+### Installation
 
+```bash
+# 1. Clone the repository
+git clone https://github.com/dndmein-rgb/Portfolio.git
+cd Portfolio
 
-Click File → Open Folder → select the extracted folder.
-
-
-Step 3: Install Dependencies
-Open a terminal inside VS Code and run:
+# 2. Install dependencies
 npm install
 
-This will install all the required node modules.
-Step 4: Run the Development Server
-Start the local development server with:
+# 3. Start the development server
 npm run dev
+```
 
-You’ll see a message like:
- Local: http://localhost:5173/
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
+---
 
-Open that link in your browser → 🎉 Your portfolio is live locally!
+## 📜 Available Scripts
 
+| Script            | Description                              |
+|-------------------|------------------------------------------|
+| `npm run dev`     | Start the local development server       |
+| `npm run build`   | Build for production (outputs to `dist/`)|
+| `npm run preview` | Preview the production build locally     |
+| `npm run lint`    | Run ESLint across the project            |
 
+---
 
-🔹 3. Customizing the Portfolio
-The project is written in React + Tailwind + Framer Motion and has comments in every file to explain what’s happening.
-You can easily customize:
-Personal details → Change your name, bio, and skills in the About component.
+## 🔧 Customization
 
+All sections are component-based and commented for easy editing:
 
-Projects → Update Projects.jsx with your own work and links.
+- **Personal info & bio** — update the relevant component in `src/components/` or `src/pages/`
+- **Projects** — edit the projects data/component with your own work and links
+- **Colors & fonts** — modify `src/index.css` or your Tailwind config
+- **Animations** — each animated element uses Framer Motion or GSAP; comments in code explain the options
+- **Contact form** — set your EmailJS `serviceId`, `templateId`, and `publicKey` in the contact component
 
+---
 
-Colors & Fonts → Modify index.css for theme customization.
+## 🌍 Deployment
 
+### Vercel (Recommended)
 
-Animations → Controlled with Framer Motion (already explained in comments).
+1. Push your repo to GitHub
+2. Go to [vercel.com](https://vercel.com) → **New Project** → Import repo
+3. Vercel auto-detects Vite + React — click **Deploy**
 
+### Netlify
 
-👉 Every section in the code is commented, so you’ll know exactly what to edit.
+1. Go to [netlify.com](https://netlify.com) → **Add New Site** → Import from Git
+2. Set build settings:
+   - **Build command:** `npm run build`
+   - **Publish directory:** `dist`
+3. Click **Deploy Site**
 
-🔹 4. Deploying the Portfolio (Free Hosting)
-You can make your portfolio live on the internet for free using Vercel or Netlify.
-✅ Option A: Deploy on Vercel
-Go to https://vercel.com and sign up with GitHub/Google.
-
-
-Click “New Project” → Import your portfolio project from GitHub.
-
-
-(If you don’t use GitHub, you can upload the project directly.)
-
-
-Vercel will auto-detect Vite + React and set everything up.
-
-
-Click Deploy → Wait for a minute → Your portfolio is live at:
- https://your-portfolio.vercel.app
-
-
-
-✅ Option B: Deploy on Netlify
-Go to https://netlify.com and sign up.
-
-
-Click “Add New Site” → Import Project.
-
-
-Select your GitHub repo (or upload the build folder).
-
-
-Build settings:
-
-
-Build command: npm run build
-
-
-Publish directory: dist
-
-
-Click Deploy Site → Your portfolio will be live at:
- https://your-portfolio.netlify.app
+---
 
 
 
-🔹 5. Using a Custom Professional Domain
-If you want a professional domain like yourname.com:
-Step 1: Buy a Domain
-Purchase from Namecheap, GoDaddy, Hostinger, Google Domains, etc.
-
-
-Step 2: Connect to Hosting (Vercel/Netlify)
-Go to your hosting dashboard (Vercel or Netlify).
-
-
-Find Domain Settings → Add Custom Domain.
-
-
-Enter your domain (e.g., yourname.com).
-
-
-Update DNS settings from your domain provider (Vercel/Netlify will give you records to add).
-
-
-👉 Within a few hours, your portfolio will be live at your custom domain.
-
-🔹 6. Why This Portfolio Is Beginner-Friendly
-✅ All code is well-structured and commented line by line
- ✅ Built with modern tools (React + Tailwind + Framer Motion)
- ✅ Easy to customize (colors, animations, sections)
- ✅ Works perfectly on mobile, tablet, and desktop
- ✅ Free deployment with Vercel/Netlify in minutes
-
-
-🎯 Final Notes
-This portfolio is not just a template—it’s a ready-to-use professional website that can help you:
-Showcase your skills and projects
-
-
-Impress recruiters and clients
-
-
-Save weeks of design & development time
-
-
-With the included guides and comments in the code, you can make it truly yours in just a few hours.
-
-✨ You’re all set! Customize → Run Locally → Deploy → Go Live 🚀
+---
 
