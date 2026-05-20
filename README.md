@@ -1,4 +1,4 @@
-# 🌐 Portfolio — dndmein-rgb
+# 🌐 Portfolio — Divyanshu Rathore
 
 A modern, responsive personal portfolio website built with **React 19**, **Vite**, **Tailwind CSS v4**, and **Framer Motion**. Features smooth scroll animations, a contact form powered by EmailJS, and a clean component-based architecture.
 
