@@ -16,16 +16,20 @@ export default function App() {
 
   return (
     <div className="relative animated-gradient text-white">
+      {/* Custom cursor - hidden on touch devices and for accessibility */}
       <CustomCursor />
+      
+      {/* Navigation bar - visible on scroll */}
       <Navbar />
+      
+      {/* Background music player */}
       <MusicPlayer />
 
-      {/* Intro always on top until it finishes */}
+      {/* Full-screen intro animation with multilingual greetings */}
       {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}
 
-      {/* Homepage always present (masked reveal) */}
+      {/* Main content sections */}
       <Home introDone={introDone} />
-
       <About />
       <Skills />
       <Projects />

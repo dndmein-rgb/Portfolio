@@ -6,6 +6,7 @@ import { SiLeetcode } from "react-icons/si";
 import { FaXTwitter, FaLinkedinIn, FaGithub } from "react-icons/fa6";
 import { FaYoutube, FaInstagram } from "react-icons/fa6";
 import ParticleBackground from "../components/ParticlesBackground";
+import { glowVariants } from "../utils/motionVariants";
 
 const socials = [
   { Icon: FaLinkedinIn, label: "LinkedIn", href: "https://www.linkedin.com/in/divyanshu-rathore101/" },
@@ -14,23 +15,6 @@ const socials = [
     href: "https://leetcode.com/u/Divyanshu_D/"},
   { Icon: FaGithub, label: "GitHub", href: "https://github.com/dndmein-rgb" },
 ];
-
-
-const glowVariants = {
-  initial: { scale: 1, y: 0, filter: "drop-shadow(0 0 0 rgba(0,0,0,0))" },
-  hover: {
-    scale: 1.2,
-    y: -3,
-    filter:
-      "drop-shadow(0 0 8px rgba(13,88,204,0.9)) drop-shadow(0 0 18px rgba(16,185,129,0.8))",
-    transition: { type: "spring", stiffness: 300, damping: 15 },
-  },
-  tap: {
-    scale: 0.95,
-    y: 0,
-    transition: { duration: 0.08 },
-  },
-};
 
 const Home = React.forwardRef((props, ref) => {
   const roles = useMemo(

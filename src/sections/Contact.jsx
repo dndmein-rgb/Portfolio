@@ -120,126 +120,138 @@ export default function Contact() {
           <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
             {/* Name field */}
             <div className="flex flex-col">
-              <label className="mb-1">
-                Name <span className="text-red-500">*</span>
+              <label htmlFor="name" className="mb-2 font-medium">
+                Name <span className="text-red-500" aria-label="required">*</span>
               </label>
               <input
+                id="name"
                 type="text"
                 name="name"
                 placeholder="Your Name"
                 value={formData.name}
                 onChange={handleChange}
+                aria-describedby={errors.name ? "name-error" : undefined}
                 className={`p-3 rounded-md bg-white/10 border ${
                   errors.name ? "border-red-500" : "border-gray-500"
-                } text-white focus:outline-none focus:border-blue-500`}
+                } text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition`}
               />
               {errors.name && (
-                <p className="text-red-500 text-xs">{errors.name}</p>
+                <p id="name-error" className="text-red-500 text-xs mt-1" role="alert">{errors.name}</p>
               )}
             </div>
 
             {/* Email field */}
             <div className="flex flex-col">
-              <label className="mb-1">
-                Email <span className="text-red-500">*</span>
+              <label htmlFor="email" className="mb-2 font-medium">
+                Email <span className="text-red-500" aria-label="required">*</span>
               </label>
               <input
+                id="email"
                 type="email"
                 name="email"
                 placeholder="Your Email"
                 value={formData.email}
                 onChange={handleChange}
+                aria-describedby={errors.email ? "email-error" : undefined}
                 className={`p-3 rounded-md bg-white/10 border ${
                   errors.email ? "border-red-500" : "border-gray-500"
-                } text-white focus:outline-none focus:border-blue-500`}
+                } text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition`}
               />
               {errors.email && (
-                <p className="text-red-500 text-xs">{errors.email}</p>
+                <p id="email-error" className="text-red-500 text-xs mt-1" role="alert">{errors.email}</p>
               )}
             </div>
 
             {/* Service dropdown */}
             <div className="flex flex-col">
-              <label className="mb-1">
-                Service Needed <span className="text-red-500">*</span>
+              <label htmlFor="service" className="mb-2 font-medium">
+                Service Needed <span className="text-red-500" aria-label="required">*</span>
               </label>
 
               <select
+                id="service"
                 name="service"
                 value={formData.service}
                 onChange={handleChange}
+                aria-describedby={errors.service ? "service-error" : undefined}
                 className={`p-3 rounded-md bg-white/10 border ${
                   errors.service ? "border-red-500" : "border-gray-500"
-                } focus:outline-none focus:border-blue-500`}
+                } text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition`}
               >
                 <option value="" disabled>
                   Something in mind?
                 </option>
-                <option value="Web Development" className="text-black">
+                <option value="Web Development">
                   Web Development
                 </option>
-                <option value="Mobile Application" className="text-black">
+                <option value="Mobile Application">
                   Mobile Application
                 </option>
-                <option value="Others" className="text-black">
+                <option value="Others">
                   Others
                 </option>
               </select>
 
               {errors.service && (
-                <p className="text-red-500 text-xs">{errors.service}</p>
+                <p id="service-error" className="text-red-500 text-xs mt-1" role="alert">{errors.service}</p>
               )}
             </div>
 
             {/* Budget field */}
             {formData.service && formData.service !== "other" && (
               <div className="flex flex-col">
-                <label className="mb-1">
-                  Budget <span className="text-red-500">*</span>
+                <label htmlFor="budget" className="mb-2 font-medium">
+                  Budget <span className="text-red-500" aria-label="required">*</span>
                 </label>
 
                 <input
+                  id="budget"
                   type="text"
                   name="budget"
                   placeholder="Your Budget"
                   value={formData.budget}
                   onChange={handleChange}
+                  aria-describedby={errors.budget ? "budget-error" : undefined}
                   className={`p-3 rounded-md bg-white/10 border ${
                     errors.budget ? "border-red-500" : "border-gray-500"
-                  } text-white focus:outline-none focus:border-blue-500`}
+                  } text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition`}
                 />
 
                 {errors.budget && (
-                  <p className="text-red-500 text-xs">{errors.budget}</p>
+                  <p id="budget-error" className="text-red-500 text-xs mt-1" role="alert">{errors.budget}</p>
                 )}
               </div>
             )}
 
             {/* Idea textarea */}
             <div className="flex flex-col">
-              <label className="mb-1">
-                Idea <span className="text-red-500">*</span>
+              <label htmlFor="idea" className="mb-2 font-medium">
+                Idea <span className="text-red-500" aria-label="required">*</span>
               </label>
 
               <textarea
+                id="idea"
                 name="idea"
                 rows={5}
                 placeholder="Enter your idea"
                 value={formData.idea}
                 onChange={handleChange}
+                aria-describedby={errors.idea ? "idea-error" : undefined}
                 className={`p-3 rounded-md bg-white/10 border ${
                   errors.idea ? "border-red-500" : "border-gray-500"
-                } text-white focus:outline-none focus:border-blue-500`}
+                } text-white focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/50 transition resize-none`}
               />
 
               {errors.idea && (
-                <p className="text-red-500 text-xs">{errors.idea}</p>
+                <p id="idea-error" className="text-red-500 text-xs mt-1" role="alert">{errors.idea}</p>
               )}
             </div>
 
             {/* Status message */}
             {status && (
               <p
+                role="status"
+                aria-live="polite"
                 className={`text-sm ${
                   status === "success"
                     ? "text-green-400"
@@ -262,6 +274,7 @@ export default function Contact() {
               whileTap={{ scale: 0.95 }}
               disabled={status === "sending"}
               type="submit"
+              aria-label={status === "sending" ? "Sending message" : "Send message"}
               className="
                 bg-blue-600 
                 hover:bg-blue-700 
@@ -271,6 +284,9 @@ export default function Contact() {
                 rounded-md 
                 font-semibold 
                 transition
+                focus:outline-none
+                focus:ring-2
+                focus:ring-blue-500/50
               "
             >
               {status === "sending" ? "Sending..." : "Send Message"}

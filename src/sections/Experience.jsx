@@ -48,17 +48,20 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
         <motion.div
           className="z-10 w-7 h-7 rounded-full bg-white shadow-[0_0_0_8px_rgba(255,255,255,0.1)]"
           style={{ scale: markerScale, opacity: markerOpacity }}
+          aria-hidden="true"
         />
         {/* Small vertical line above or below the marker */}
         <motion.div
           className={`absolute ${isAbove ? "-top-8" : "-bottom-8"} w-[3px] bg-white/40`}
           style={{ height: 40, opacity: cardOpacity }}
+          aria-hidden="true"
         />
         {/* Experience card with role, company, duration, description */}
         <motion.article
-          className={`absolute ${isAbove ? "bottom-12" : "top-12"} bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-7 w-[320px] shadow-lg`}
+          className={`absolute ${isAbove ? "bottom-12" : "top-12"} bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-7 w-[320px] shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50`}
           style={{ opacity: cardOpacity, y: cardY, maxWidth: "90vw" }}
           transition={{ duration: 0.4, delay: idx * 0.15 }}
+          tabIndex={0}
         >
           <h3 className="text-xl font-semibold">{exp.role}</h3>
           <p className="text-md text-gray-400 mb-3">{exp.company} | {exp.duration}</p>
@@ -75,12 +78,14 @@ function ExperienceItem({ exp, idx, start, end, scrollYProgress, layout }) {
       <motion.div
         className="absolute -left-[14px] top-3 z-10 w-7 h-7 rounded-full bg-white shadow-[0_0_0_8px_rgba(255,255,255,0.1)]"
         style={{ scale: markerScale, opacity: markerOpacity }}
+        aria-hidden="true"
       />
       {/* Experience card (mobile version) */}
       <motion.article
-        className="bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-5 w-[90vw] max-w-sm ml-6 shadow-lg"
+        className="bg-gray-900/80 backdrop-blur border border-gray-700/70 rounded-xl p-5 w-[90vw] max-w-sm ml-6 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500/50"
         style={{ opacity: cardOpacity, x: cardX }}
         transition={{ duration: 0.4, delay: idx * 0.15 }}
+        tabIndex={0}
       >
         <h3 className="text-lg font-semibold break-words">{exp.role}</h3>
         <p className="text-sm text-gray-400 mb-2 break-words">{exp.company} | {exp.duration}</p>

@@ -28,13 +28,11 @@ const useIsMobile = (query = "(max-width: 639px)") => {
     if (typeof window === "undefined") return;
     const mql = window.matchMedia(query); // Media query list
     const handler = (e) => setIsMobile(e.matches); // Update state when query changes
-    mql.addEventListener?.("change", handler) || mql.addListener(handler);
-    // Add correct event listener (modern OR fallback)
+    mql.addEventListener("change", handler);
+    // Add correct event listener
 
     setIsMobile(mql.matches); // Initialize with current screen size
-    return () =>
-      mql.removeEventListener?.("change", handler) ||
-      mql.removeListener(handler);
+    return () => mql.removeEventListener("change", handler);
     // Cleanup event listener
   }, [query]);
 
@@ -51,19 +49,19 @@ export default function Projects() {
       {
         title: "CodeGecko",
         link: "coderabbit-flame.vercel.app",
-        bgColor: "#0d4d3d",
+        bgColor: "#0f1419",
         image: isMobile ? photo1 : image1, // Mobile vs desktop image
       },
       {
         title: "Chatify",
         link: "https://chatify-jr5g.onrender.com/",
-        bgColor: "#3884d3",
+        bgColor: "#1a4d4a",
         image: isMobile ? photo2 : image2,
       },
       {
         title: "Mercato",
         link: "https://mercato-il6a.onrender.com/",
-        bgColor: "#dc9317",
+        bgColor: "#2a3a3a",
         image: isMobile ? photo3 : image3,
       },
       {
@@ -93,13 +91,12 @@ export default function Projects() {
 
   // 🔹 Update activeIndex as user scrolls
   React.useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((v) => {
+    return scrollYProgress.on("change", (v) => {
       const idx = thresholds.findIndex((t) => v <= t);
       // Find the first threshold that is greater than or equal to scroll progress
       setActiveIndex(idx === -1 ? thresholds.length - 1 : idx);
       // If not found, show the last project
     });
-    return () => unsubscribe();
     // Cleanup scroll listener
   }, [scrollYProgress, thresholds]);
 
@@ -114,8 +111,8 @@ export default function Projects() {
       style={{
         height: `${100 * projects.length}vh`,
         // Section height = 100vh per project (makes scroll-based transitions work)
-        backgroundColor: activeProject.bgColor,
-        // Background changes color based on active project
+        backgroundColor: activeProject.bgColor || "#0f0f0f",
+        // Background changes color based on active project, fallback to dark
         transition: "background-color 400ms ease",
       }}
     >
@@ -168,7 +165,7 @@ export default function Projects() {
               <div
                 className={`relative w-full overflow-hidden bg-black/20 shadow-2xl md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] ${
                   isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"
-                } h-[62vh] sm:h-[66vh]`}
+                } min-h-[50vh] max-h-[70vh]`}
                 style={{ zIndex: 10, transition: "box-shadow 250ms ease" }}
               >
                 {/* Project Image */}
@@ -199,12 +196,12 @@ export default function Projects() {
         </div>
 
         {/* View Project Button */}
-        <div className={`absolute ${isMobile ? "bottom-20" : "bottom-10"}`}>
+        <div className={`absolute ${isMobile ? "bottom-20" : "bottom-10"} z-30`}>
           <a
             href={activeProject?.link}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-200 transition-all"
+            className="inline-block px-6 py-3 font-semibold rounded-lg bg-white text-black hover:bg-gray-200 transition-all focus:outline-none focus:ring-2 focus:ring-white/50"
             aria-label={`View ${activeProject?.title}`}
           >
             View Project

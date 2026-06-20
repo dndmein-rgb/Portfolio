@@ -5,9 +5,27 @@ export default function CustomCursor() {
   // Store mouse position (x, y) in local state
   // By default, it starts at { x: 0, y: 0 }
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isVisible, setIsVisible] = useState(false);
 
   // useEffect runs once when component mounts
   useEffect(() => {
+    // Check if it's a touch device or prefers reduced motion
+    const isTouchDevice = () => {
+      return (
+        typeof window !== 'undefined' &&
+        (navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0)
+      );
+    };
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // Don't show custom cursor on touch devices or if motion is reduced
+    if (isTouchDevice() || prefersReducedMotion) {
+      return;
+    }
+
+    setIsVisible(true);
+
     // Function to update cursor position whenever mouse moves
     const moveHandler = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
@@ -20,12 +38,16 @@ export default function CustomCursor() {
     return () => window.removeEventListener("mousemove", moveHandler);
   }, []);
 
+  // Don't render if not visible
+  if (!isVisible) return null;
+
   return (
     <div
       // pointer-events-none → ensures this custom cursor does NOT block clicks
       // fixed + top-0 + left-0 → always pinned to top-left
       // z-[9999] → ensures it stays above everything
       className="pointer-events-none fixed top-0 left-0 z-[9999]"
+      aria-hidden="true"
       style={{
         // Move the div to match current mouse position
         // -40px centers the cursor since the circle size = 80px (20rem/2)

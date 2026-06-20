@@ -30,11 +30,9 @@ export default function About() {
             className="relative w-[160px] h-[160px] md:w-[200px] md:h-[200px] rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-[#1CD8D2]/20 to-[#302b63]/20 border border-[#1CD8D2]/25"
             whileHover={{ scale: 1.02 }}
             transition={{ type: "spring", stiffness: 200, damping: 18 }}
-            aria-hidden="true"
           >
             {/* Replace with your actual avatar image */}
-            <div className="absolute inset-0 " />
-            <img src={p} alt="test" /> //TODO
+            <img src={p} alt="Divyanshu Rathore" className="w-full h-full object-cover" />
           </motion.div>
 
           {/* Name + Role + Bio + CTAs */}

@@ -36,6 +36,7 @@
 .delay-200 { transition-delay: 200ms; }
 .delay-300 { transition-delay: 300ms; }
 .delay-400 { transition-delay: 400ms; }
+.delay-500 { transition-delay: 500ms; }
 
 
 @keyframes fadeInUp {
@@ -58,7 +59,17 @@
   animation: floating 4s ease-in-out infinite;
 }
 
-
+/* ✨ Respects user's motion preferences for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 @media (max-width: 640px) {
   body > *:not(#contact):not(footer) {
