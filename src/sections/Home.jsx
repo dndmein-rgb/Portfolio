@@ -86,7 +86,7 @@ const Home = React.forwardRef((props, ref) => {
           <div className="w-full lg:pr-24 mx-auto max-w-[48rem]">
             {/* typing text */}
             <motion.div
-              className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-wide min-h-[1.6em]"
+              className="mb-3 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold text-white tracking-wide min-h-[1.6em] text-center lg:text-left"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.6 }}
