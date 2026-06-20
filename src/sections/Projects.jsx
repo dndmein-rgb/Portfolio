@@ -163,21 +163,25 @@ export default function Projects() {
 
               {/* Project Image Wrapper */}
               <div
-                className={`relative w-full overflow-hidden bg-black/20 shadow-2xl md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] ${
+                className={`relative w-full bg-black/20 shadow-2xl md:shadow-[0_35px_60px_-15px_rgba(0,0,0,0.7)] ${
                   isMobile ? "mb-6 rounded-lg" : "mb-10 sm:mb-12 rounded-xl"
-                } min-h-[50vh] max-h-[70vh]`}
-                style={{ zIndex: 10, transition: "box-shadow 250ms ease" }}
+                }`}
+                style={{ zIndex: 10, transition: "box-shadow 250ms ease", minHeight: "50vh", maxHeight: "70vh", overflow: "auto", display: "flex", alignItems: "center", justifyContent: "center" }}
               >
                 {/* Project Image */}
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-contain drop-shadow-xl md:drop-shadow-2xl"
+                  className="drop-shadow-xl md:drop-shadow-2xl"
                   style={{
                     position: "relative",
                     zIndex: 10,
                     filter: "drop-shadow(0 16px 40px rgba(0,0,0,0.65))",
                     transition: "filter 200ms ease",
+                    maxWidth: "100%",
+                    maxHeight: "100%",
+                    width: "auto",
+                    height: "auto",
                   }}
                   loading="lazy"
                 />

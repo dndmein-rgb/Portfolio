@@ -9,8 +9,5 @@ export default defineConfig({
   build: {
     assetsDir: 'assets',
     outDir: 'dist',
-  },
-  server: {
-    middlewareMode: true,
   }
 })
