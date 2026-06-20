@@ -8,9 +8,11 @@ import { motion, useScroll, AnimatePresence } from "framer-motion";
 import image1 from "../assets/image1.png";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
+import image4 from "../assets/image4.png";
 import photo1 from "../assets/photo1.png";
 import photo2 from "../assets/photo2.png";
 import photo3 from "../assets/photo3.png";
+import photo4 from "../assets/photo4.png";
 
 const MH3 = motion.h3;
 // Shortcut for <motion.h3> for easier typing
@@ -64,6 +66,12 @@ export default function Projects() {
         bgColor: "#dc9317",
         image: isMobile ? photo3 : image3,
       },
+      {
+        title:"JSON Lens",
+        "link":"https://json-lens-mu.vercel.app/",
+        bgColor: "#1a1a2e" ,
+        image:isMobile ? photo4:image4
+      }
     ],
     [isMobile],
     // Memoize to prevent recalculating unless screen size changes
@@ -167,7 +175,7 @@ export default function Projects() {
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover drop-shadow-xl md:drop-shadow-2xl"
+                  className="w-full h-full object-contain drop-shadow-xl md:drop-shadow-2xl"
                   style={{
                     position: "relative",
                     zIndex: 10,
