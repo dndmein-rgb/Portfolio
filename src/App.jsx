@@ -1,5 +1,5 @@
 import { useState } from "react";
-import IntroAnimation from "./components/IntroAnimation";
+// import IntroAnimation from "./components/IntroAnimation";
 import Navbar from "./components/Navbar";
 import CustomCursor from "./components/CustomCursor";
 import Home from "./sections/Home";
@@ -26,7 +26,7 @@ export default function App() {
       <MusicPlayer />
 
       {/* Full-screen intro animation with multilingual greetings */}
-      {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />}
+      {/* {!introDone && <IntroAnimation onFinish={() => setIntroDone(true)} />} */}
 
       {/* Main content sections */}
       <Home introDone={introDone} />
